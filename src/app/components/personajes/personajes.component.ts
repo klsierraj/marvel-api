@@ -3,6 +3,7 @@ import { HeroesMarvelService } from '../../services/heroes-marvel.service';
 import { Observable } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-personajes',
   templateUrl: './personajes.component.html',
@@ -10,15 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class PersonajesComponent implements OnInit {
 
-  heroes: any;
-  prev_page: number;
-  next_page: number;
-  total_pages: any;
-  actualpage: number;
-  constructor(
-    private _characterService: HeroesMarvelService
+  p: number = 1;
+    constructor(
+    private _characterService: HeroesMarvelService,
+    private _comicService: HeroesMarvelService,
   ) { }
   allCharacters: Observable<any>
+  allComics: Observable<any>
 
   ngOnInit(): void {
     this.getCharacters();
@@ -26,6 +25,9 @@ export class PersonajesComponent implements OnInit {
 
   getCharacters () {
     this.allCharacters = this._characterService.getAllCharacters();
+  }
+  getComics () {
+    this.allComics = this._comicService.getAllComics();
   }
 
 }

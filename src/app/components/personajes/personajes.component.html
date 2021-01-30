@@ -1,8 +1,15 @@
 <div class="seccion-personajes">
-    <div class="container-personajes"  *ngFor="let character of allCharacters | async">
+    <div class="container-personajes"  *ngFor="let character of allCharacters | async | paginate: { itemsPerPage: 10, currentPage: p } ">
         <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}">
-        <p>{{character.name}}</p>
-        <p>{{character.description}}</p>
+        <h3>{{character.name}}</h3>
+        <p class="descripcion">{{character.description}}</p>
+        <div class="comics-relacionados">
+            <div  *ngFor="let comic of character.comics.items">
+                <a>{{comic.name}}</a>
+            </div>
+        </div>
+        
     </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 

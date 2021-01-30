@@ -1,7 +1,21 @@
+p , a {
+    font-weight: 200;
+    font-size: 16px;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+}
 .seccion-personajes {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 40px;
+    max-width: 1400px;
+    margin: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+    
 }
 .container-personajes img {
     max-width: 100%;
@@ -9,6 +23,12 @@
     height: 176px;
     width: 176px;
     object-fit: cover;
-    margin: -50px 0 30px;
-    box-shadow: 0 3px 8px #a7a7a7;
+    
+    box-shadow: 0 3px 40px #a7a7a7;
+}
+
+.comics-relacionados {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-row-gap: 10px;
 }
