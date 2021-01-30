@@ -1,0 +1,8 @@
+<div class="seccion-personajes">
+    <div class="container-personajes"  *ngFor="let character of allCharacters | async">
+        <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}">
+        <p>{{character.name}}</p>
+        <p>{{character.description}}</p>
+    </div>
+</div>
+

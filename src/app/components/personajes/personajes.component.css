@@ -1,0 +1,14 @@
+.seccion-personajes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+}
+.container-personajes img {
+    max-width: 100%;
+    border-radius: 50%;
+    height: 176px;
+    width: 176px;
+    object-fit: cover;
+    margin: -50px 0 30px;
+    box-shadow: 0 3px 8px #a7a7a7;
+}
