@@ -1,3 +1,46 @@
+
+.header {
+    background: #2d2727;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-self: center;
+}
+
+.container-header {
+    max-width: 1400px;
+    margin: auto;
+   
+}
+
+.titulo-favoritos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.titulo-favoritos img {
+    width: 40px;
+    height: 40px;
+    
+}
+.titulo-favoritos h2 {
+    margin-left: 10px;
+}
+
+.boton-favoritos-seccion {
+    display: flex;
+    justify-content: center;
+}
+.addrandom {
+    background: #ec1e23;
+    color: white;
+    padding: 10px;
+}
+.container-header img {
+ width: 10%;
+ 
+}
 p , a {
     font-weight: 200;
     font-size: 16px;
@@ -10,11 +53,12 @@ h3 {
 }
 .seccion-personajes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 30% 30% 40%;
     max-width: 1400px;
     margin: auto;
     grid-column-gap: 20px;
     grid-row-gap: 40px;
+    margin-top: 20px;
     
 }
 .container-personajes img {
