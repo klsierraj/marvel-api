@@ -4,11 +4,16 @@
     </div>
 </div>
 
+
+
+
 <div class="seccion-personajes">
+
+
     <div class="container-personajes"  *ngFor="let character of allCharacters | async | paginate: { itemsPerPage: 10, currentPage: p } ">
         <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}">
         <h3>{{character.name}}</h3>
-        <p class="descripcion">{{character.description | slice:0:100}}...</p>
+        <p class="descripcion">{{character.description | slice:0:70}}...</p>
         <div class="comics-relacionados">
             <div  *ngFor="let comic of character.comics.items">
                 <a>{{comic.name}}</a>
@@ -18,16 +23,33 @@
     </div>
 
     <div class="favoritos">
+
+
         <div class="titulo-favoritos">
             <img src="../../../assets/images/favourites.png">
             <h2>My favourites</h2>  
         </div>
+    
+    
         <div class="boton-favoritos-seccion">
-            <button class="addrandom">Add random comics</button>
+            <button (click)="randomComics()" class="addrandom">Add random comics</button>
         </div>
-        
-        
+    
+    
+        <div *ngFor="let favorito of favoritos">
+                    <div>
+                    
+                    <button (click)="eliminarFavoritos(favorito.id)"><img src="../../../assets/images/btn-delete.png"></button> 
+                    <img class="img-favorita" src="{{favorito.thumbnail.path}}.{{favorito.thumbnail.extension}}">     
+                    <p>{{favorito.title}}</p>
+           
+                 </div>
+        </div>
+    
+    
     </div>
+   
+    
     
 
 </div>

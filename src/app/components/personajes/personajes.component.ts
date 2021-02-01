@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesMarvelService } from '../../services/heroes-marvel.service';
 import { Observable } from 'rxjs';
-import { ComponentFixture } from '@angular/core/testing';
-
+import { Key } from 'protractor';
 
 
 @Component({
@@ -11,13 +10,15 @@ import { ComponentFixture } from '@angular/core/testing';
   styleUrls: ['./personajes.component.css']
 })
 export class PersonajesComponent implements OnInit {
-  
-  comicsGuardados: Array<any>
+  public personajes: any;
+  public onlyComic: any;
+  public comicR: any;
+  public randonComics: any;
+  public favoritos: any[] = [];
   p: number = 1;
-  public favourites: any[] = [];
     constructor(
     private _characterService: HeroesMarvelService,
-    private _comicService: HeroesMarvelService,
+
   ) { }
 
 
@@ -25,25 +26,67 @@ export class PersonajesComponent implements OnInit {
   allComics: Observable<any>
 
   ngOnInit(): void {
-    this.getCharacters();
-   this.guardarComic(1886, 2);
+    this.getCharacters();     
+   this.getComics();
+
+   //Recorrer LocalStorage 
+   Object.values(localStorage).forEach((key)=> {
+    this.favoritos.push(JSON.parse(key));
+   })
   }
+
 
   getCharacters () {
     this.allCharacters = this._characterService.getAllCharacters();
   }
+  
   getComics () {
-    this.allComics = this._comicService.getAllComics();
+    this.allComics = this._characterService.getAllComics();
   }
 
-  guardarComic (id:number, content:any) {
-    localStorage.setItem( id + '_id', JSON.stringify(content));
-    this.favourites = [];
-    Object.values(localStorage).forEach((e: any, i) => {
-      this.favourites.push(JSON.parse(e));
-    });
-    console.log(this.favourites);
+  
+
+  guardarFavorito(id:number, content:any){
+    
+    localStorage.setItem(  id + '', JSON.stringify(content));
+    this.favoritos = [];
+   Object.values(localStorage).forEach((key)=> {
+    this.favoritos.push(JSON.parse(key));
+   })
+
 
   }
+
+  
+eliminarFavoritos(id: number) {
+  localStorage.removeItem(id + '');
+  this.favoritos = [];
+  Object.values(localStorage).forEach((key) => {
+    this.favoritos.push(JSON.parse(key));
+    
+  })
+
+  
+  
+  
+}
+randomComics() {
+  this._characterService.getAllComics().subscribe(response => {
+   this.randonComics = response;
+
+    for(let i = 0; i <= 1; i++) {
+      var comicAzar = this.randonComics[Math.floor(Math.random()*this.randonComics.length)];
+      this.guardarFavorito(comicAzar.id, comicAzar)
+
+    }
+
+});
+
+}
+    
+
+  
+ 
+
 
 }

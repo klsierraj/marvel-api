@@ -76,3 +76,13 @@ h3 {
     grid-template-columns: repeat(2, 50%);
     grid-row-gap: 10px;
 }
+
+.img-favorita {
+    width: 30%;
+
+}
+
+.container-personajes {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
