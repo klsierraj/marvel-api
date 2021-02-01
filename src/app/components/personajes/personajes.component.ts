@@ -74,7 +74,7 @@ randomComics() {
   this._characterService.getAllComics().subscribe(response => {
    this.randonComics = response;
 
-    for(let i = 0; i <= 1; i++) {
+    for(let i = 0; i <= 2; i++) {
       var comicAzar = this.randonComics[Math.floor(Math.random()*this.randonComics.length)];
       this.guardarFavorito(comicAzar.id, comicAzar)
 
