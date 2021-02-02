@@ -1,17 +1,29 @@
 
-.header {
+header {
     background: #2d2727;
     height: 80px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-self: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+   
+   
+    
 }
-
-.container-header {
+.containerheader {
     max-width: 1400px;
     margin: auto;
-   
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+
+.containerheader img {
+width:  150px;
+padding: 10px 10px 10px 0px;
 }
 
 .titulo-favoritos {
@@ -36,6 +48,7 @@
     background: #ec1e23;
     color: white;
     padding: 10px;
+    font-weight: 700;
 }
 .container-header img {
  width: 10%;
@@ -53,12 +66,12 @@ h3 {
 }
 .seccion-personajes {
     display: grid;
-    grid-template-columns: 30% 30% 40%;
+    grid-template-columns: 80% 20%;
     max-width: 1400px;
     margin: auto;
     grid-column-gap: 20px;
     grid-row-gap: 40px;
-    margin-top: 20px;
+    margin-top: 8em;
     
 }
 .container-personajes img {
@@ -78,11 +91,49 @@ h3 {
 }
 
 .img-favorita {
-    width: 30%;
+   max-width: 100%;
 
 }
 
-.container-personajes {
+
+
+.bloque-personajes {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 20px;
+}
+
+.lista-comics {
+    font-size: 14px;
+}
+button.eliminar-btn {
+    float: right;
+    
+}
+
+input#search-character {
+    border: none;
+    font-size: 17px;
+    margin-left: 20%;
+    padding: 15px;
+    
+
+}
+
+@media only screen and (max-width: 768px) {
+    
+
+    .bloque-personajes {
+        grid-template-columns: 1fr;
+        grid-gap: 0;
+       
+    }
+    .seccion-personajes {
+        grid-template-columns: 1fr;
+        padding: 2em;
+    }
+    input#search-character {
+        margin-left: 0;
+    }
+
 }

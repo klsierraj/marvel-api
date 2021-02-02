@@ -1,27 +1,33 @@
-<div class="header">
-    <div class="container-header">
-    <img src="../../../assets/images/logo-marvel.png">
-    </div>
+
+
+<header>
+    <div class="containerheader">
+        <img src="../../../assets/images/logo-marvel.png">
+        <input type="text" [(ngModel)]="characterFilter.name" placeholder="Search Character" id="search-character" name="search-character" /> 
 </div>
+</header>
 
 
 
 
 <div class="seccion-personajes">
 
-
-    <div class="container-personajes"  *ngFor="let character of allCharacters | async | paginate: { itemsPerPage: 10, currentPage: p } ">
+<div class="bloque-personajes">
+    <div class="container-personajes"  *ngFor="let character of allCharacters | async | filterBy: characterFilter | paginate: { itemsPerPage: 10, currentPage: p } ">
         <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}">
         <h3>{{character.name}}</h3>
         <p class="descripcion">{{character.description | slice:0:70}}...</p>
+        <h3>Related Comics</h3>
         <div class="comics-relacionados">
             <div  *ngFor="let comic of character.comics.items">
-                <a>{{comic.name}}</a>
+                <a class="lista-comics">{{comic.name}}</a>
             </div>
         </div>
         <button (click)="guardarComic(onlyComic.id, onlyComic)"></button>
     </div>
+</div>
 
+<div>
     <div class="favoritos">
 
 
@@ -39,7 +45,7 @@
         <div *ngFor="let favorito of favoritos">
                     <div>
                     
-                    <button (click)="eliminarFavoritos(favorito.id)"><img src="../../../assets/images/btn-delete.png"></button> 
+                    <button (click)="eliminarFavoritos(favorito.id)" class="eliminar-btn"><img src="../../../assets/images/btn-delete.png"></button> 
                     <img class="img-favorita" src="{{favorito.thumbnail.path}}.{{favorito.thumbnail.extension}}">     
                     <p>{{favorito.title}}</p>
            
@@ -48,6 +54,10 @@
     
     
     </div>
+</div>
+   
+
+   
    
     
     

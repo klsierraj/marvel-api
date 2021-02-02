@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesMarvelService } from '../../services/heroes-marvel.service';
 import { Observable } from 'rxjs';
-import { Key } from 'protractor';
-
-
 @Component({
   selector: 'app-personajes',
   templateUrl: './personajes.component.html',
@@ -11,10 +8,9 @@ import { Key } from 'protractor';
 })
 export class PersonajesComponent implements OnInit {
   public personajes: any;
-  public onlyComic: any;
-  public comicR: any;
   public randonComics: any;
   public favoritos: any[] = [];
+  public characterFilter: any = { name: '' };
   p: number = 1;
     constructor(
     private _characterService: HeroesMarvelService,
